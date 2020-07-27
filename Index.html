@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quiz App</title>
+        <link href="style.css" rel="stylesheet"></link>
+    </head>
+    <body>
+        
+      <div class="container">
+      <div id="q-container" class="hide">
+      
+      <div id="question">Question</div>
+      
+      <div id="answer" class="btn-grid">
+      
+      <button id="ans1" onclick="check(this)" class="btn">Answer 1</button>
+      <button id="ans2" onclick="check(this)" class="btn">Answer 2</button>
+      <button id="ans3" onclick="check(this)" class="btn">Answer 3</button>
+      
+      
+      </div>
+      </div>
+      
+      <div class="button">
+          <button id="start" onclick="startBtn()" class="startBtn btn">Start</button>
+       <button id="next" onclick="nextques()" class="nextBtn btn hide">Next</button>
+      </div>
+      <div>
+          <button id="submit" onclick="submitBtn()" class="btn hide">Close</button>
+      </div>
+       <div id="thanks">
+       </div>
+        
+      </div>  
+        
+        
+     <script src="app.js"></script>   
+        
+    </body>
+</html>
