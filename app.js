@@ -16,8 +16,41 @@ var questions = [
         {
         a: "Arif alvi",
         b: "nawaz shareef",
-        c: "pervaiz musharaf"},
+        c: "Bilawal bhutto"},
         correct: "Arif alvi"
+    
+},
+
+{
+    question: "CM of Sindh is ",
+    answers:
+        {
+        a: "Murad Ali shah",
+        b: "Qaim Ali Shah",
+        c: "Mustafa kamal"},
+        correct: "Murad Ali shah"
+    
+},
+
+{
+    question: "CM of Punjab is ",
+    answers:
+        {
+        a: "Shehbaz Shareef",
+        b: "Ch Shujaat",
+        c: "Usman Buzdar"},
+        correct: "Usman Buzdar"
+    
+},
+
+{
+    question: "CM of KPK is ",
+    answers:
+        {
+        a: "Pervaiz Khatak",
+        b: "Mehmood khan",
+        c: "Pervaiz iqbal"},
+        correct: "Mehmood khan"
     
 }
 
@@ -25,94 +58,110 @@ var questions = [
 ]
 
 
+var data = document.getElementById("data")
 
-
-
-var thanks = document.getElementById("thanks")
-var start = document.getElementById("start");
-var next = document.getElementById ("next")
-var questionContainer = document.getElementById ("q-container");
-var question = document.getElementById ("question")
-var submit = document.getElementById("submit")
-
-var answer1 = document.getElementById("ans1")
-var answer2 = document.getElementById("ans2")
-var answer3 = document.getElementById("ans3")
-
+var question = document.getElementById("question");
+var answer = document.getElementById("answer");
+var startbtn = document.getElementById("startbtn")
+var nextbtn = document.getElementById("nextBtn");
+var submitbtn = document.getElementById("submitBtn")
+var questionContainer = document.getElementById("q-container")
+var final = document.getElementById("final")
 var indexOfQuestion = 0;
-
+var score = 0;
 function showQuestion(){
-    question.innerHTML = questions[indexOfQuestion].question 
-     answer1.innerHTML = questions[indexOfQuestion].answers.a; 
-     answer2.innerHTML = questions[indexOfQuestion].answers.b; 
-     answer3.innerHTML = questions[indexOfQuestion].answers.c; 
-}
+    var questionNum = document.getElementById("q-no")
+    questionNum.innerHTML = "Question "+(indexOfQuestion+1)+" of 5"
+    // question appear here
+    question.classList.add("question")
+    
+question.innerHTML = questions[indexOfQuestion].question;
 
+// this button for option 1
+var button = document.createElement("button")
+button.classList.add("btn")
+button.addEventListener("click", function(){select(this);})
+button.innerText = questions[indexOfQuestion].answers.a;
+button.classList.add("question")
+answer.appendChild(button);
+
+// this button for option 2
+var button = document.createElement("button")
+button.classList.add("btn")
+button.addEventListener("click", function(){select(this);})
+button.innerText = questions[indexOfQuestion].answers.b;
+button.classList.add("question")
+answer.appendChild(button)
+
+// this button for option 3
+var button = document.createElement("button")
+button.classList.add("btn")
+button.addEventListener("click", function(){select(this);})
+button.innerText = questions[indexOfQuestion].answers.c;
+button.classList.add("question")        
+answer.appendChild(button)
+
+}
+// start the quiz
 function startBtn(){
-    start.classList.add("hide");
-     questionContainer.classList.remove("hide")
-     showQuestion();
-    
-     next.classList.remove("hide");
-     
-     
-     
-
+    data.classList.add("hide")
+startbtn.classList.add("hide");
+nextbtn.classList.remove("hide")
+showQuestion()
 }
-
-
-function nextques(){
-removeClass()
-indexOfQuestion++;
-showQuestion();
-if(questions.length-1 == true){
-next.classList.add("hide")
-    submit.classList.remove("hide")
+// clear the question and answer container
+function clearBtn(){
+    question.innerHTML = "";
+    answer.innerHTML = "";
 }
-
+// change background of selected button
+function select(e){
+    deselect()
+    e.classList.add("selected")
     
 }
-
-function check(e){
-removeClass()
-if(e.innerHTML== questions[indexOfQuestion ].correct ) {
-  e.classList.add("right");
- 
-}
-  else{
-    e.classList.add("wrong");
-  }
-}
-
-    
-    
-
-
-
-function removeClass(){
-    var rem = document.getElementsByClassName("right")
-    for(i=0; i< rem.length; i++){
-        rem[i].classList.remove("right")
+// remove select class so at time one option is selected
+function deselect(){
+    var deselect = document.getElementsByClassName("selected");
+    for(i=0; i<deselect.length;i++){
+    deselect[i].classList.remove("selected")
     }
-  var rem1 = document.getElementsByClassName("wrong")
-    for(i=0; i< rem1.length; i++){
-        rem1[i].classList.remove("wrong")
-    }  
-    
-    
 }
+// validate the answer
+function validate(){
+    var validate = document.getElementsByClassName("selected");
+   if(validate[0].innerText== questions[indexOfQuestion ].correct){
+    score++
+    
+   }
+   
+}
+// next question 
+function nextBtn(){
+    validate()
+    clearBtn();
+    indexOfQuestion++;
+    showQuestion()
+    if(indexOfQuestion == 4){
+        nextbtn.classList.add("hide")
+            submitbtn.classList.remove("hide")
+        }
+}
+
+// submit button function
+var nameBig = document.getElementById("nameBig")
+var scoreTotal = document.getElementById("score")
 
 function submitBtn(){
-submit.classList.add("hide");
-questionContainer.classList.add("hide");
-thanks.innerHTML ="Thank you"
+    validate()
+    var player = document.getElementById("player").value;
+    questionContainer.classList.add("hide")
+    submitbtn.classList.add("hide")
+    final.classList.remove("hide")
+    nameBig.innerHTML = player;
+    scoreTotal.innerText = "Score : "+score;
+    
 }
-
-
-
-
-
-
-
-
-
+function restart(){
+    location.reload();
+}

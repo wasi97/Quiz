@@ -1,66 +1,71 @@
-body {
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
 
-    margin:0px;
-    padding:0px;
-    display:flex;
-    justify-content:center ;
-    align-items:center ;
-    background-color:aquamarine;
-    height:50vh;
+}
+
+.hide{
+    display: none;
 }
 
 .container{
-
-
-    max-width:800px;
-    background-color:white;
-    border-radius:10px;
-    padding:10px;
-    box-shadow:0 0 10px 2px;
-    
+    padding: 10px;
+    margin: 10px;
+    background-color: yellowgreen;
+    width: 500px;
+    height: 550px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px 4px;
 }
 
 .btn-grid{
-    display:grid;
-    gap:5px;
-    margin:5px;
+    /* question and answer container  */
+    display: grid;
+    gap: 5px;
+    margin: 5px;
 }
-
+/* each button style */
 .btn{
     border: 2px solid aquamarine;
     background-color:aquamarine;
     border-radius:5px;
+    height: 40px;
 }
+/* selected option of answer have this class */
 
-.startBtn, .nextBtn{
-    font-size:2rem;
-    font-weight:bold ;
-    padding:5px;
-}
-
-.button{
-    display:flex;
-    justify-content:center ;
-    align-items:center ;
-}
-
-.hide{
-    display:none;
-}
 .selected{
-    background-color:blue;
+background-color: green;
 }
 
-.right{
-    background-color:green;
+.text-design{
+    font-size: xx-large;
+    font-weight: bolder;
+    font-style: italic;
+    text-align: center;
+    text-shadow: red 4px 4px 5px;
 }
-.wrong{
-    background-color:red;
+/* input div design */
+.input{
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    text-decoration: underline  wavy green;
+    text-shadow: blue 2px 2px 4px;}
+/* input field design */
+#player{
+    border: yellowgreen 2px solid;
+    border-radius: 10px;
+    margin-top: 10px;
 }
-
-
-
-
-
-
-
+.btn-group{
+    margin: 5px auto;
+   padding: 3px;
+    width: 100px;
+    height: 30px;
+}
+.question{
+    font-size: 25px;
+    font-weight: 400;
+}

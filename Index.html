@@ -5,33 +5,60 @@
         <link href="style.css" rel="stylesheet"></link>
     </head>
     <body>
-        
-      <div class="container">
-      <div id="q-container" class="hide">
-      
-      <div id="question">Question</div>
-      
-      <div id="answer" class="btn-grid">
-      
-      <button id="ans1" onclick="check(this)" class="btn">Answer 1</button>
-      <button id="ans2" onclick="check(this)" class="btn">Answer 2</button>
-      <button id="ans3" onclick="check(this)" class="btn">Answer 3</button>
-      
-      
-      </div>
-      </div>
-      
-      <div class="button">
-          <button id="start" onclick="startBtn()" class="startBtn btn">Start</button>
-       <button id="next" onclick="nextques()" class="nextBtn btn hide">Next</button>
-      </div>
-      <div>
-          <button id="submit" onclick="submitBtn()" class="btn hide">Close</button>
-      </div>
-       <div id="thanks">
-       </div>
-        
-      </div>  
+
+    
+        <!-- main container -->
+        <div class="container">
+            
+            <div>
+                <h1 class="text-design">Quiz App</h1>
+            </div>
+            <!-- initial data of player -->
+            <div id="data" class="center input">
+                Enter your Name <br>
+                
+                <input id="player"  type="text" placeholder="ENTER YOUR NAME"> </input>
+            </div>
+            <!-- container containing question and answer options -->
+            <div id="q-container">
+                <div id="Q-No">
+                    <h4 id="q-no"></h4>
+                </div>
+                <!-- each question  -->
+                <div id="question">
+
+                </div>
+                <!-- answer options -->
+                <div id="answer" class="btn-grid">
+
+
+                </div>
+
+
+            </div>
+            <div>
+                <button id="startbtn" onclick="startBtn()" class="btn btn-group">Start</button>
+            </div>
+            <div>
+                <button id="nextBtn" onclick="nextBtn()" class="btn btn-group hide">Next</button>
+            </div>
+
+            <div>
+                <button id="submitBtn" onclick="submitBtn()" class="btn btn-group hide">Submit</button>
+            </div>
+            <!-- after submit view -->
+            <div id="final" class="hide">
+                <h1 id="nameBig" class="btn text-design">MR X</h1>
+                <h1 id="score" class="btn text-design"></h1>
+              <br> <h1 class="btn text-design">Thank You</h1><br>
+              <button class="btn text-design" onclick="restart()">Play again</button>
+
+            </div>
+            
+               
+            
+        </div>
+       
         
         
      <script src="app.js"></script>   
